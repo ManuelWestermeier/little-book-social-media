@@ -1,14 +1,14 @@
 import { readFileSync, writeFileSync } from "fs"
 import { createServer } from "http"
 
-const uploadPage = readFileSync("pages\\upload.htm", "utf-8")
-const stylePage = readFileSync("pages\\style.css", "utf-8")
+const uploadPage = readFileSync("./pages/upload.htm", "utf-8")
+const stylePage = readFileSync("./pages/style.css", "utf-8")
 
-const firstPage = readFileSync("pages\\index.htm", "utf-8").split("$$$")
-const searchPage = readFileSync("pages\\search.html", "utf-8").split("$$$")
-const bookPage = readFileSync("pages\\book.html", "utf-8").split("$$$")
+const firstPage = readFileSync("./pages/index.htm", "utf-8").split("$$$")
+const searchPage = readFileSync("./pages/search.html", "utf-8").split("$$$")
+const bookPage = readFileSync("./pages/book.html", "utf-8").split("$$$")
 
-const books = JSON.parse(readFileSync("data.json", "utf-8"))
+const books = JSON.parse(readFileSync("./data.json", "utf-8"))
 
 const allowedElemTypes = ["b", "i", "h1", "h2", "h3", "h4", "h5", "h6"]
 

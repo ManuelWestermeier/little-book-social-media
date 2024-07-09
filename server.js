@@ -95,18 +95,16 @@ createServer((req, res) => {
         res.write(firstPage[0])
 
         try {
-            const watched = JSON.parse(request.headers?.cookie || "[]")
-            if (!watched instanceof Array) {
-                throw
+            const watched = (req.headers?.cookie || "")
+                .split(";")
+                .map(v => parseInt(v))
+                .filter(v => v < books.length)
+                .filter(v => !isNaN(v))
+
+            for (const watchedId in watched) {
+                res.write(`<p><a href="/book?id=${watchedId}">${books[watchedId][1]}</a></p>`)
             }
-            for (const watchedId in watched ) {
-                if (watched instanceof Number) {
-                    res.write(`<p><a href="/book?id=${watched}">${books[watched][1]}</a></p>`)
-                }
-            }
-        } catch (error) {
-            res.write("<p>Nothing bevore watched</p>")
-        }
+        } catch (error) { }
 
         return res.end(firstPage[1])
     }
@@ -135,7 +133,7 @@ createServer((req, res) => {
     }
 
     return res.end("404")
-}).listen(80)
+}).listen(802)
 
 setInterval(() => {
     writeFileSync("data.json", JSON.stringify(books), "utf-8")

@@ -23,13 +23,7 @@
     </p>
     <script>
         const url = new URL(document.location)
-
-        const old = JSON.parse(document.cookie) || []
-
-        document.cookie = JSON.stringify([...new Set([
-            parseInt(url.searchParams.get("id")),
-            ...old
-        ])])
+        document.cookie = url.searchParams.get("id")
     </script>
 </body>
 

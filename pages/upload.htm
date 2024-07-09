@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload</title>
+    <link rel="stylesheet" href="/style">
+</head>
+<body>
+    <a href="/">
+        Home
+    </a>
+    <h1>
+        Upload
+    </h1>
+    <form action="/upload" method="post" enctype="application/x-www-form-urlencoded">
+        <input type="text" placeholder="title..." name="t">
+        <br>
+        <textarea name="c" placeholder="content..."></textarea>
+        <br>
+        <button type="submit">
+            Upload
+        </button>
+    </form>
+    <p>
+        Uploaded books cant be removed anymore...are you sure?
+    </p>
+</body>
+</html>

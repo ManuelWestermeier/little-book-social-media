@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search for Books</title>
+    <link rel="stylesheet" href="/style">
+</head>
+
+<body>
+    <a href="/">
+        Home
+    </a>
+    <h1>
+        Search for Books
+    </h1>
+    <form action="/search" method="get">
+        <input type="text" name="q" placeholder="search...">
+        <button type="submit">
+            Search
+        </button>
+    </form>
+    <ol>
+        $$$
+    </ol>
+    <script>
+        const url = new URL(document.location)
+        document.querySelector("input[name=q]").value = url.searchParams.get("q")
+    </script>
+</body>
+
+</html>

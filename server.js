@@ -94,6 +94,20 @@ createServer((req, res) => {
 
         res.write(firstPage[0])
 
+        try {
+            const watched = JSON.parse(request.headers?.cookie || "[]")
+            if (!watched instanceof Array) {
+                throw
+            }
+            for (const watchedId in watched ) {
+                if (watched instanceof Number) {
+                    res.write(`<p><a href="/book?id=${watched}">${books[watched][1]}</a></p>`)
+                }
+            }
+        } catch (error) {
+            res.write("<p>Nothing bevore watched</p>")
+        }
+
         return res.end(firstPage[1])
     }
 
